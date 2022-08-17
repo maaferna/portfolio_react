@@ -4,6 +4,8 @@ import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import React, { Component } from 'react';
 
+import CertificateList from './components/CertificatesComponent';
+
 class App extends Component {
   render() {
     return (
@@ -13,6 +15,7 @@ class App extends Component {
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
+        <CertificateList />
       </div>
     );
   }
