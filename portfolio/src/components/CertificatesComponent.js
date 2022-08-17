@@ -13,7 +13,7 @@ class CertificateList extends Component {
           type: 'Specialization',
           name_specialization: 'Programming for Everybody (Getting Started with Python)',
           description_specialization: 'This course aims to teach everyone the basics of programming computers using Python. We cover the basics of how one constructs a program from a series of simple instructions in Python.  The course has no pre-requisites and avoids all but the simplest mathematics. Anyone with moderate computer experience should be able to master the materials in this course. This course will cover Chapters 1-5 of the textbook “Python for Everybody”.  Once a student completes this course, they will be ready to take more advanced programming courses. This course covers Python 3.',
-          image_path: '/assets/images/PythonForEverybody.png',
+          image_path: 'assets/images/PythonForEverybody.png',
           rating: '4.8',
           name_course1: 'Python Data Structures',
           description_course1: 'This course will introduce the core data structures of the Python programming language. We will move past the basics of procedural programming and explore how we can use the Python built-in data structures such as lists, dictionaries, and tuples to perform increasingly complex data analysis. This course will cover Chapters 6-10 of the textbook “Python for Everybody”.  This course covers Python 3.',
@@ -33,7 +33,7 @@ class CertificateList extends Component {
         <div key={certificate.id} ClassName="col-12 mt-5">
           <Media tag="li">
             <Media left middle>
-              <Media object src={certificate.name_specialization} alt={certificate.name_specialization}/>
+              <Media object src={certificate.image_path} alt={certificate.name_specialization}/>
             </Media>
             <Media body className="ml-5">
               <Media heading>{certificate.name}</Media>
