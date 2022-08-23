@@ -16,11 +16,10 @@ class Certificates extends Component {
   }
 
 
-
   render() {
     const certificate_list = this.props.certificates.map((certificate) => {
       return (
-        <div key={certificate.id} className="col-12 col-md-5 m-1">
+        <div key={certificate.id} className="col-12 col-md-6">
           <Card onClick={()=> this.onCerticateSelect(certificate)}>
             <CardImg width="100%" object src={certificate.certificate_path} alt={certificate.name_specialization}/>
           </Card>

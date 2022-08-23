@@ -51,10 +51,10 @@ class CertificateDetail extends Component{
         if (this.props.certificate != null) {
             return (
             <div className="row">
-                <div className="col-12 col-md-5 m-1">
+                <div className="col-12 col-md-4">
                     { this.renderCertificate(this.props.certificate) }
                 </div>
-                <div className="col-12 col-md-5 m-1">
+                <div className="col-12 col-md-8">
                     { this.renderCourses(this.props.certificate.courses) }
                 </div>
             </div>
