@@ -1,38 +1,140 @@
-.App {
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+
+  .container-fluid .jumbotron, .container .jumbotron {
+    border-radius: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media screen and (min-width: 768px)
+  {
+  .container-fluid .jumbotron, .container .jumbotron {
+      padding-left: 60px;
+      padding-right: 60px;
+  }
+  }
+
+  @media screen and (min-width: 768px)
+  {
+  .jumbotron {
+      padding-bottom: 48px;
+      padding-top: 48px;
+  }
+  }
+
+  .jumbotron {
+    background-color: rgba(125, 157, 156, 0.9);
+    color:rgba(241, 238, 238, 0.951) !important;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-top: 180px;
+    background-size: contain;
+  }
+.CardTitle {
+    font-style: italic;
+}
+
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
+
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+
+.footer {
+  background-color: rgba(125, 157, 156, 0.5);
+  padding: 20px 0px;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+  clear: both;
+  background: -moz-linear-gradient(rgba(87, 111, 114, 0.8), rgba(240, 235, 227, 0.2));
+}
+.footer .a {
+  color: #d12e05;
+  padding: 5%;
+}
+.footer .i {
+  color: #2421cd;
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}
+
+.navbar-dark {
+  background-color: rgba(125, 157, 156, 0.5);
+}
+
+.navbar {
+  padding-bottom: 10px;
+}
+
+nav {
+  padding-bottom: 10px;
+}
+nav a {
+  text-decoration: none;
+  color: #fff !important;
+  display: block;
+  padding-left: 15px;
+  transition: 0.5s background-color;
+}
+nav a:hover {
+  background-color: #74e9e9;
+  color: #444;
+}
+nav a.active {
+  background-color: #f6e5e5;
+  color: #444;
+  cursor: default;
+}
+/* Sub Menus */
+nav li li {
+  font-size: .8em;
+  background-color: #00b7ea;
+}
+nav > ul > li {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav > ul > li > a {
+  padding-left: 0;
+}
+/* Sub Menus */
+nav li ul {
+  position: absolute;
+  display: none;
+  width: inherit;
+}
+nav li:hover ul {
+  display: block;
+}
+nav li ul li {
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#paragraph {
+  color:rgba(250, 244, 244, 0.8) !important;
+  background-color: rgba(62, 36, 3, 0.1)
 }

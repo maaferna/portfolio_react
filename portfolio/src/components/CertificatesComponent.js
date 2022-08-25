@@ -1,12 +1,8 @@
-import React, { Component, useState } from "react";
+import React, {Component} from "react";
 import { Media, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 import { Document, Page } from 'react-pdf';
 
 class Certificates extends Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     const certificate_list = this.props.certificates.map((certificate) => {
