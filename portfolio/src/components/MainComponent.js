@@ -8,6 +8,10 @@ import CertificateDetail from "./CertificateDetailComponent";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 
+import Contactme from './ContactmeComponent';
+
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 class Main extends Component {
   constructor(props) {
     super(props);
