@@ -138,3 +138,11 @@ nav li ul li {
   color:rgba(250, 244, 244, 0.8) !important;
   background-color: rgba(62, 36, 3, 0.1)
 }
+
+.dropdown {
+    background-color: rgba(125, 157, 156, 0.5);
+}
+
+.dropdown .dropdownlist{
+  background-color: rgba(125, 157, 156, 0.8);
+}
