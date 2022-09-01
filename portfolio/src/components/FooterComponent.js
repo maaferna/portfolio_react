@@ -17,11 +17,11 @@ function Footer(props) {
               <div className="col-4 col-sm-3 offset-2">
                     <h5>Links</h5>
                     <ul>
-                        <li><Link to="/Home">Home</Link></li>
+                        <li><Link to="/home">Home</Link></li>
                         <li><Link to="/Resume">Resume</Link></li>
-                        <li><Link to="./portafolio">Portafolio</Link></li>
-                        <li><Link to="./skills">Skills</Link></li>
-                        <li><Link to="./contactme">Contact Me</Link></li>
+                        <li><Link to="./Portafolio">Portafolio</Link></li>
+                        <li><Link to="./Skills">Skills</Link></li>
+                        <li><Link to="./Contactme">Contact Me</Link></li>
                     </ul>
               </div>
               <div className="col-4 col-sm-3">

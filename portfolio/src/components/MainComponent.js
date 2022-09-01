@@ -26,12 +26,30 @@ class Main extends Component {
   }
 
   render() {
+    const HomePage = () => {
+     return (
+       <div>
+          <CertificatesList certificates={this.state.certificates}
+           onClick={(certificateId)=> this.onCerticateSelect(certificateId)}/>
+           <CertificateDetail certificate={this.state.certificates.filter((certificate)=> certificate.id === this.state.selectedCertificate)[0]} />
+      </div>
+     );
+    }
+
+    const ContactPage = () => {
+      return (
+        <Contactme/>
+      );
+    }
+
+
     return (
       <div>
         <Header />
-        <CertificatesList certificates={this.state.certificates}
-            onClick={(certificateId)=> this.onCerticateSelect(certificateId)}/>
-        <CertificateDetail certificate={this.state.certificates.filter((certificate)=> certificate.id === this.state.selectedCertificate)[0]} />
+        <Routes>
+          <Route path="/home" element={ <HomePage/> } />
+          <Route path='/contactme' element={ < ContactPage />} />
+        </Routes>
         <Footer />
       </div>
     );

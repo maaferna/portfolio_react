@@ -77,12 +77,6 @@ body {
   color: #2421cd;
 }
 
-address{
-    font-size:80%;
-    margin:0px;
-    color:#0f0f0f;
-}
-
 .navbar-dark {
   background-color: rgba(125, 157, 156, 0.5);
 }
@@ -145,4 +139,11 @@ nav li ul li {
 
 .dropdown .dropdownlist{
   background-color: rgba(125, 157, 156, 0.8);
+}
+
+
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: rgba(87, 111, 114, 0.8);
 }
