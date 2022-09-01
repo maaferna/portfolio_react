@@ -29,16 +29,16 @@ class CertificateDetail extends Component{
         }
         const renderedCourses = courses.map((course) => {
         return (
-            <div key={course.id}>
-                <li>
-                    <p>{course.name_course}</p>
-                    <p>-- {course.description_course}</p>
-                </li>
-            </div>
+            <Card>
+              <div key={course.id}>
+                    <CardTitle>{course.name_course}</CardTitle>
+                    <CardText>-- {course.description_course}</CardText>
+              </div>
+          </Card>
         );
     });
     return(
-        <div>
+        <div className="container">
             <h4>Courses</h4>
             <ul className="list-unstyled">
                 { renderedCourses }
@@ -50,13 +50,15 @@ class CertificateDetail extends Component{
     render() {
         if (this.props.certificate != null) {
             return (
-            <div className="row">
-                <div className="col-12 col-md-4">
-                    { this.renderCertificate(this.props.certificate) }
-                </div>
-                <div className="col-12 col-md-8">
-                    { this.renderCourses(this.props.certificate.courses) }
-                </div>
+            <div className="container">
+              <div className="row">
+                  <div className="col-12 col-md-4">
+                      { this.renderCertificate(this.props.certificate) }
+                  </div>
+                  <div className="col-12 col-md-8">
+                      { this.renderCourses(this.props.certificate.courses) }
+                  </div>
+              </div>
             </div>
             );
          }
