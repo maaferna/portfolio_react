@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import { Media, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Media, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
-class CertificateDetail extends Component{
-
-    renderCertificate(certificate) {
+    function RenderCertificate({certificate}) {
         if (certificate != null)
             return (
                     <Card>
-                        <CardImg top src={certificate.certificate_path} alt={certificate.name_specialization} />
                         <CardBody>
                             <CardTitle style={{fontWeight: 'bold'}}>{certificate.courses.name_course}</CardTitle>
                             <CardText>{certificate.description_specialization}</CardText>
@@ -21,7 +19,7 @@ class CertificateDetail extends Component{
             );
     }
 
-    renderCourses(courses) {
+    function RenderCourses({courses}) {
         if (courses == null) {
             return (
                 <div></div>
@@ -47,16 +45,31 @@ class CertificateDetail extends Component{
         );
     }
 
-    render() {
-        if (this.props.certificate != null) {
+    const CertificateDetail=(props) =>{
+        if (props.certificate != null) {
             return (
             <div className="container">
               <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link to='/menu'>Menu</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>
+                        <Link to='/certificates'>Specializations & Profesional Certifications</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>{props.certificate.name_specialization}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>{props.certificate.name_specialization}</h3>
+                    <hr />
+                </div>
+            </div>
+              <div className="row">
                   <div className="col-12 col-md-4">
-                      { this.renderCertificate(this.props.certificate) }
+                      <RenderCertificate certificate={props.certificate} />
                   </div>
                   <div className="col-12 col-md-8">
-                      { this.renderCourses(this.props.certificate.courses) }
+                      <RenderCourses courses={props.certificate.courses} />
                   </div>
               </div>
             </div>
@@ -66,7 +79,6 @@ class CertificateDetail extends Component{
             return (
             <div></div>
             );
-        }
         }
 }
 
