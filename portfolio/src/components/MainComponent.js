@@ -10,7 +10,9 @@ import Footer from "./FooterComponent";
 
 import Contactme from './ContactmeComponent';
 
-import { Navigate, Route, Routes } from 'react-router-dom';
+import MenuCertificates from './CertificatesListComponent'
+
+import { Navigate, Route, Routes, useParams } from 'react-router-dom';
 
 class Main extends Component {
   constructor(props) {
@@ -42,6 +44,14 @@ class Main extends Component {
       );
     }
 
+    const CertificateWithId = () => {
+      const params = useParams();
+      return (
+        <CertificateDetail certificate={this.state.certificates.filter((certificate)=>certificate.id===parseInt(params.certificateId,10))[0]}
+         />
+      );
+    }
+
 
     return (
       <div>
@@ -49,6 +59,9 @@ class Main extends Component {
         <Routes>
           <Route path="/home" element={ <HomePage/> } />
           <Route path='/contactme' element={ < ContactPage />} />
+          <Route path='/certificates' element={<MenuCertificates certificates={this.state.certificates} />} />
+          <Route path='/certificates/:certificateId' element={<CertificateWithId/>} />
+          <Route path='*' element={<Navigate replace to="/home" />} />
         </Routes>
         <Footer />
       </div>
