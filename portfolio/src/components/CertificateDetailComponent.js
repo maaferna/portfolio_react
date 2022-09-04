@@ -27,7 +27,12 @@ import { Link } from 'react-router-dom';
         }
         const renderedCourses = courses.map((course) => {
         return (
-            <Card>
+            <Card style={{
+                               paddingLeft: 10,
+                               paddingRight: 10,
+                               paddingTop: 10,
+                               paddingBottom: 30
+                           }}>
               <div key={course.id}>
                     <CardTitle>{course.name_course}</CardTitle>
                     <CardText>-- {course.description_course}</CardText>
@@ -38,9 +43,9 @@ import { Link } from 'react-router-dom';
     return(
         <div className="container">
             <h4>Courses</h4>
-            <ul className="list-unstyled">
+            <Media list>
                 { renderedCourses }
-            </ul>
+            </Media>
         </div>
         );
     }
