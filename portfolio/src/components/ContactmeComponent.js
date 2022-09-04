@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Contactme extends Component {
@@ -13,10 +13,17 @@ class Contactme extends Component {
             email: '',
             agree: false,
             contactType: 'Tel.',
-            message: ''
+            message: '',
+            touched: {
+              firstname: false,
+              lastname: false,
+              telnum: false,
+              email: false
+            }
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
     }
     handleInputChange(event) {
         const target = event.target;
@@ -33,7 +40,41 @@ class Contactme extends Component {
         alert("Current State is: " + JSON.stringify(this.state))
         event.preventDefault();    }
 
+    handleBlur = (field) => (evt) => {
+      this.setState({
+        touched: { ...this.state.touched, [field]: true}
+      });
+    }
+
+    validate(firstname, lastname,telnum,email) {
+      const errors = {
+        firstname: '',
+        lastname: '',
+        telnum: '',
+        email: '',
+      };
+      if(this.state.touched.firstname && firstname.length <3)
+           errors.firstname = 'First Name should be >= 3 characters';
+       else if(this.state.touched.firstname && firstname.length >30)
+           errors.firstname = 'First Name should be < 30 characters';
+       else if(this.state.touched.lastname && lastname.length <3)
+           errors.lastname = 'Last Name should be >= 3 characters';
+       else if(this.state.touched.lastname && lastname.length >30)
+           errors.lastname = 'Last Name should be >= 30 characters';
+
+       const reg = /^\d+$/;
+       if(this.state.touched.telnum && !reg.test(telnum))
+           errors.telnum = 'Tel. Number should contain only numbers';
+
+       if(this.state.touched.email && email.split('').filter(x => x === '@').length !== 1)
+           errors.email = 'Email should contain a @';
+
+
+       return errors;
+    }
+
     render() {
+      const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email)
       return(
       <div className="container">
               <div className="row row-content">
@@ -73,7 +114,11 @@ class Contactme extends Component {
                 <Col md={10}>
                     <Input type="text" id="firstname" name="firstname"
                     placeholder='First Name' value={this.state.firstname}
+                    valid={errors.firstname===''}
+                    invalid={errors.firstname!==''}
+                    onBlur={this.handleBlur('firstname')}
                     onChange={this.handleInputChange}/>
+                    <FormFeedback>{errors.firstname}</FormFeedback>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -81,7 +126,11 @@ class Contactme extends Component {
                 <Col md={10}>
                     <Input type="text" id="lastname" name="lastname"
                     placeholder='Last Name' value={this.state.lastname}
+                    valid={errors.lastname===''}
+                    invalid={errors.lastname!==''}
+                    onBlur={this.handleBlur('lastname')}
                     onChange={this.handleInputChange}/>
+                    <FormFeedback>{errors.lastname}</FormFeedback>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -89,7 +138,11 @@ class Contactme extends Component {
                 <Col md={10}>
                     <Input type="tel" id="telnum" name="telnum"
                     placeholder='Tel. Num' value={this.state.telnum}
+                    valid={errors.telnum===''}
+                    invalid={errors.telnum!==''}
+                    onBlur={this.handleBlur('telnum')}
                     onChange={this.handleInputChange}/>
+                    <FormFeedback>{errors.telnum}</FormFeedback>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -97,7 +150,11 @@ class Contactme extends Component {
                 <Col md={10}>
                     <Input type="email" id="email" name="email"
                     placeholder='Email' value={this.state.email}
+                    valid={errors.email===''}
+                    invalid={errors.email!==''}
+                    onBlur={this.handleBlur('email')}
                     onChange={this.handleInputChange}/>
+                    <FormFeedback>{errors.email}</FormFeedback>
                 </Col>
             </FormGroup>
             <FormGroup row>
@@ -139,83 +196,5 @@ class Contactme extends Component {
             );
         }
 }
-             //  <div className="row row-content">
-             //     <div className="col-12">
-             //        <h3>Send us your Feedback</h3>
-             //     </div>
-             //      <div className="col-12 col-md-9">
-             //          <form>
-             //              <div className="form-group row">
-             //                  <label for="firstname" className="col-md-2 col-form-label">First Name</label>
-             //                  <div className="col-md-10">
-             //                      <input type="text" className="form-control" id="firstname" name="firstname"
-             //                      placeholder="First Name">
-             //                  </div>
-             //              </div>
-             //              <div className="form-group row">
-             //                  <label for="lastname" className="col-md-2 col-form-label">Last Name</label>
-             //                  <div className="col-md-10">
-             //                      <input type="text" className="form-control" id="lastname" name="lastname"
-             //                      placeholder="Last Name">
-             //                  </div>
-             //              </div>
-             //              <div className="form-group row">
-             //                  <label for="telnum" class="col-12 col-md-2 col-form-label">Contact Tel.</label>
-             //                  <div className="col-5 col-md-3">
-             //                      <input type="tel" className="form-control" id="areacode" name="areacode"
-             //                      placeholder="Area Code">
-             //                  </div>
-             //                  <div className="col-7 col-md-7">
-             //                      <input type="tel" className="form-control" id="telnum" name="telnum"
-             //                      placeholder="Tel. Number">
-             //                  </div>
-             //              </div>
-             //              <div className="form-group row">
-             //                  <label for="emailid" className="col-md-2 col-form-label">Email</label>
-             //                  <div className="col-md-10">
-             //                      <input type="email" className="form-control" id="emailid" name="emailid"
-             //                      placeholder="email@example.cl">
-             //                  </div>
-             //              </div>
-             //              <div className="form-group row">
-             //                  <div className="col-md-6" offset-md-2>
-             //                      <div className="form-check">
-             //                          <input type="checkbox" className="form-check-input"
-             //                              name="approve" id="approve" value="">
-             //                          <label className="form-check-label" for="approve">
-             //                              <strong>May we contact you?</strong></label>
-             //                      </div>
-             //                  </div>
-             //                  <div className="col-md-3 offset-md-1">
-             //                      <select className="form-control">
-             //                          <option>Tel.</option>
-             //                          <option>Email.</option>
-             //                      </select>
-             //                  </div>
-             //              </div>
-             //              <div className="form-group row">
-             //                  <label for="feedback" className="col-md-2 col-form-label">Your Feedback</label>
-             //                  <div className="col-md-10">
-             //                      <textarea className="form-control" id="feedback" name="feedback"
-             //                          rows="12"></textarea>
-             //                  </div>
-             //              </div>
-             //              <div className="form-group row">
-             //                  <div className="offset-md-2 col-md-10">
-             //                      <button type="submit" className="btn btn-primary">
-             //                          Send Feedback
-             //                      </button>
-             //                  </div>
-             //              </div>
-             //          </form>
-             //      </div>
-             //      <br>
-             //       <div className="container">
-             //          <h5>My Portfolio Calendar</h5>
-             //          <iframe src="https://calendar.google.com/calendar/embed?src=f6t6nja6g9r4n3mvhm1p71ijlc%40group.calendar.google.com&ctz=America%2FSantiago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-             //      </div>
-             // </div>
-
-
 
 export default Contactme;
