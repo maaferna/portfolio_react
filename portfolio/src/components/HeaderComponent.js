@@ -3,6 +3,22 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron }
 import { NavLink } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+class Submenu extends React.Component {
+  render() {
+    return (
+      <ul className="nav__submenu">
+        <li className="nav__submenu-item ">
+          <a>English Version</a>
+        </li>
+        <li className="nav__submenu-item ">
+          <a>Versión Español</a>
+        </li>
+      </ul>
+    )
+  }
+}
+
+
 class Header extends Component {
     constructor(props) {
       super(props);
@@ -24,37 +40,37 @@ class Header extends Component {
               <div>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top">
                   <div className="container">
-                  <NavbarToggler onClick={this.toggleNav}/>
-                    <div className="col-10">
-                      <Collapse isOpen={this.state.isNavOpen} navbar>
-                        <Nav navbar>
-                          <NavItem>
-                            <NavLink className="nav-link" to="/home">
-                                <span className="fa fa-home fa-lg"></span>Home
-                            </NavLink>
-                            <Dropdown>
-                              <Dropdown.Toggle className="dropdowndisplay">
-                                Resume/Curriculum Vitae
-                              </Dropdown.Toggle>
-
-                              <Dropdown.Menu className="dropdown">
-                                <Dropdown.Item className="dropdownlist" href="#/resume">Versión en Español</Dropdown.Item>
-                                <Dropdown.Item className="dropdownlist" href="#/curriculumvitae">English Version</Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                            <NavLink className="nav-link" to="/portafolio">
-                                <span className="fa fa-list fa-lg"></span>Portafolio
-                            </NavLink>
-                            <NavLink className="nav-link" to="/contactme">
-                                <span className="fa fa-address-card fa-lg"></span>Contact Me
-                            </NavLink>
-                          </NavItem>
-                        </Nav>
-                      </Collapse>
-                    </div>
-                    <div className="col">
-                        <img src="image/perfil.jpeg" className="avatar" alt="avatar image"/>
-                    </div>
+                    <NavbarToggler onClick={this.toggleNav}/>
+                    <div className="row">
+                        <div className="col-10">
+                          <Collapse isOpen={this.state.isNavOpen} navbar>
+                            <Nav navbar>
+                              <NavItem>
+                                <NavLink className="nav-link" to="/home">
+                                    <span className="fa fa-home fa-lg"></span>Home
+                                </NavLink>
+                              </NavItem>
+                              <NavItem>
+                                <NavLink className="nav-link" to="/portafolio">
+                                    <span className="fa fa-list fa-lg"></span>Portafolio
+                                </NavLink>
+                              </NavItem>
+                              <NavItem>
+                                <NavLink className="nav-link" to="/contactme">
+                                    <span className="fa fa-address-card fa-lg"></span>Contact Me
+                                </NavLink>
+                              </NavItem>
+                              <NavItem className="nav-link">
+                                <span className="fa fa-address-card fa-lg"></span>Resume/Curriculum Vitae
+                                <Submenu />
+                              </NavItem>
+                            </Nav>
+                          </Collapse>
+                        </div>
+                        <div className="col">
+                            <img width="50rem" height="50rem" className="d-inline-block align-top rounded-circle" src="assets/images/perfil.jpeg" alt="avatar image"/>
+                        </div>
+                      </div>
                   </div>
                 </Navbar>
                 <div className="jumbotron">
