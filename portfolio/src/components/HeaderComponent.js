@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader,
+ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -22,11 +23,13 @@ class Submenu extends React.Component {
 class Header extends Component {
     constructor(props) {
       super(props);
-
-      this.toggleNav = this.toggleNav.bind(this);
       this.state = {
-        isNavOpen: false
+        isNavOpen: false,
+        isModalOpen: false
       };
+      this.toggleNav = this.toggleNav.bind(this);
+      this.toggleModal = this.toggleModal.bind(this);
+      this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav() {
@@ -34,6 +37,20 @@ class Header extends Component {
         isNavOpen: !this.state.isNavOpen
       });
     }
+
+    toggleModal() {
+      this.setState({
+        isModalOpen: !this.state.isModalOpen
+      });
+    }
+
+    handleLogin(event) {
+      this.toggleModal();
+      alert("Username: " + this.username.value + " Password: " + "****" +
+        " Remember: " + this.remember.checked);
+        event.preventDefault();
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -42,7 +59,7 @@ class Header extends Component {
                   <div className="container">
                     <NavbarToggler onClick={this.toggleNav}/>
                     <div className="row">
-                        <div className="col-10">
+                        <div className="col-10 col-md-8">
                           <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                               <NavItem>
@@ -67,8 +84,17 @@ class Header extends Component {
                             </Nav>
                           </Collapse>
                         </div>
-                        <div className="col">
-                            <img width="50rem" height="50rem" className="d-inline-block align-top rounded-circle" src="assets/images/perfil.jpeg" alt="avatar image"/>
+                        <div className="col-1 col-md-2">
+                          <img width="40rem" height="40rem" className="d-inline-block align-top rounded-circle" src="assets/images/perfil.jpeg" alt="avatar image"/>
+                        </div>
+                        <div className="col-1 col-md-2">
+                            <Nav className="ml-auto" navbar>
+                              <NavItem>
+                                  <Button outline onClick={this.toggleModal}>
+                                      <span className="fa fa-sign-in fa-lg">Login</span>
+                                  </Button>
+                              </NavItem>
+                            </Nav>
                         </div>
                       </div>
                   </div>
@@ -92,6 +118,30 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
+
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                  <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                  <ModalBody>
+                    <Form onSubmit={this.handleLogin}>
+                      <FormGroup>
+                          <Label htmlFor="username">Username</Label>
+                          <Input type="text" id="username" name="username"
+                                innerRef={(input) =>this.username = input}></Input>
+                      </FormGroup>
+                      <FormGroup>
+                          <Label htmlFor="password">Password</Label>
+                          <Input type="password" id="password" name="password"
+                                innerRef={(input) =>this.password = input}></Input>
+                      </FormGroup>
+                      <FormGroup check>
+                          <Label check>
+                            <Input type="checkbox" name="remember"
+                                    innerRef={(input) =>this.remember = input}>Remember Me</Input></Label>
+                      </FormGroup>
+                      <Button type="submit" value="submit">Login</Button>
+                    </Form>
+                  </ModalBody>
+                </Modal>
               </div>
             </React.Fragment>
         )
