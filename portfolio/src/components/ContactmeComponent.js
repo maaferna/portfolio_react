@@ -97,8 +97,8 @@ class Contactme extends Component {
                   <div className="col-12 col-sm-11 offset-sm-1">
                       <div className="btn-group" role="group">
                           <a role="button" className="btn btn-primary" href="tel:56956291334"
-                          data-toggle="tooltip" data-html="true" title="Or Call me at <br><strong>+56 9 5629 1334</strong>" data-placement="bottom"><i class="fa fa-phone"></i>Call</a>
-                          <a role="button" className="btn btn-info"><i class="fa fa-skype"></i>Skype</a>
+                          data-toggle="tooltip" data-html="true" title="Or Call me at <br><strong>+56 9 5629 1334</strong>" data-placement="bottom"><i className="fa fa-phone"></i>Call</a>
+                          <a role="button" className="btn btn-info"><i className="fa fa-skype"></i>Skype</a>
                           <a role="button" className="btn btn-success" href="malito:confusion@food.net"><i className="fa fa-envelope-o"></i>Email</a>
                       </div>
                   </div>
